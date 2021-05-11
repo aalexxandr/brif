@@ -1,27 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink } from 'react-router-dom';
-
-const MenuItems = [
-    {
-      name: 'Главная',
-      path: '/'
-    },
-    {
-      name: 'Активные заявки',
-      path: 'open_requests'
-    },
-    {
-      name : 'Закрытые заявки',
-      path : 'closed_requests'
-    }
-]
+import { routes } from '../utils/routes'
 
 export default function LongMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -56,9 +42,9 @@ export default function LongMenu() {
           },
         }}
       >
-        {MenuItems.map((item) => (
-          <MenuItem key={item.path} selected={item === 'Pyxis'} onClick={handleClose}>
-            <NavLink to={item.path}>{item.name}</NavLink>
+        {routes.map(({path, name}) => (
+          <MenuItem key={path} onClick={handleClose}>
+            <NavLink to={path}>{name}</NavLink>
           </MenuItem>
         ))}
       </Menu>

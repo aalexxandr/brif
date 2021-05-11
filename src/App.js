@@ -1,26 +1,26 @@
 import { BrowserRouter } from 'react-router-dom';
 import './App.css'
-import AppRoutes from './components/AppRoutes'
 import NavbarContainer from './components/Navbar/NavbarContainer'
 import React, { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/appReducer'
 import { auth } from './utils/firebaseInit'
-import Loader from './components/Loader';
+import Loader from './components/Loader/Loader';
+import AppRoutes from './components/AppRoutes';
 
 const App = (props) => {
   const [user] = useAuthState(auth)
 
-  useEffect(() => {
-    props.initializeApp(user)
-  }, [user])
+  useEffect(({initializeApp} = props) => {
+    initializeApp(user)
+  })
 
   return props.initial ? 
   <Loader /> :
   <BrowserRouter>
     <NavbarContainer />
-    {/* <AppRoutes/> */}
+    <AppRoutes />
   </BrowserRouter>
     
 }

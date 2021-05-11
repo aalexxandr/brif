@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import Menu from '../Menu'
 import AuthorizedUser from './AuthorizedUser'
 import { logout } from '../../redux/authReducer'
 

@@ -20,10 +20,10 @@ export const appReducer = (state = initialState, action) => {
   }
 }
 
-const toggleInitial = (initial) => ({
-  type: TOGGLE_INITIAL,
-  initial
-})
+// const toggleInitial = (initial) => ({
+//   type: TOGGLE_INITIAL,
+//   initial
+// })
 
 export const initializeApp = (user) => (dispatch) => {
   if(user) {

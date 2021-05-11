@@ -1,6 +1,6 @@
-import firebase from "firebase/app"
 import { auth, provider } from './firebaseInit'
-import { email } from './consts'
+
+export const email = 'alexxaandr.m@gmail.com'
 
 export const firebaseLogout = () => {
   auth.signOut()

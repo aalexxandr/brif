@@ -1,5 +1,5 @@
 import { Container, Grid } from '@material-ui/core'
-
+import './Loader.css'
 const Loader = () => (
     <Container>
         <Grid container
