@@ -1,33 +1,31 @@
-// import React from 'react'
-// import Loader from '../Loader/Loader'
-// import { useCollectionData } from 'react-firebase-hooks/firestore'
-// import { firestore } from '../../utils/context'
-// import { collectionName } from '../../utils/consts'
-// import ClosedRequests from './ClosedRequests'
+import {useEffect} from 'react'
+import { connect } from 'react-redux'
+import { getRequests } from '../../redux/requestsReducer'
+import Loader from '../Loader/Loader'
+import ClosedRequests from './ClosedRequests'
 
-const OpenedRequestsContainer = () => {
-    return 'closed request'
-    // const [requests, loading] = useCollectionData(
-    //     firestore.collection(collectionName)
-    // )
+const ClosedRequestsContainer = (props) => {
+    useEffect( () => {
+        props.getRequests()
+    }, [])
 
-    // if (loading) {
-    //     return <Loader/>
-    // }
 
-    // const requestsData = []
+    const requestsData = []
 
-    // requests.map(request => {
-    //     if (request.status === 'closed') {
-    //         requestsData.push(request)
-    //     }
-    // })
+    props.requests.map(request => {
+        if (request.status === 'close') {
+            requestsData.push(request)
+        }
+    })
 
-    // return (
-    //    <ClosedRequests requests={requestsData}/>
-    // )
+    return (
+        props.loading ? <Loader /> : <ClosedRequests requests={requestsData} />
+    )
 }
-
-export default OpenedRequestsContainer
+const mapStateToProps = (state) => ({
+    requests: state.requests.requestsData,
+    loading: state.requests.loading
+})
+export default connect(mapStateToProps, {getRequests})(ClosedRequestsContainer)
 
 

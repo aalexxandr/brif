@@ -6,7 +6,7 @@ const instance = axios.create({
 
 export const requestsApi = {
   get() {
-    return instance.get().then( response => response.data)
+    return instance.get().then( response => response)
   },
   post(requestData) {
     return instance.post( {requestData} ).then( response => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core'
 import RequestListItem from '../RequestListItem'
 
-const OpenRequests = (requests) => (
+const OpenRequests = (props) => (
     <Container>
         <Grid container
             style={{ height: window.innerHeight - 100 }}
@@ -18,7 +18,7 @@ const OpenRequests = (requests) => (
                     Отрытые заявки
                 </Typography>
                 {
-                    requests.requests.map((request, index) =>
+                    props.requests.map((request, index) =>
                         <RequestListItem key={index} request={request} />
                     )
                 }

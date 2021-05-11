@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core'
 import RequestListItem from '../RequestListItem'
 
-const ClosedRequests = (requests) => (
+const ClosedRequests = (props) => (
     <Container>
         <Grid container
             style={{ height: window.innerHeight - 100 }}
@@ -14,11 +14,11 @@ const ClosedRequests = (requests) => (
                 alignItems="center"
                 direction="column"
             >
-                <Typography variant="h6" style={{ margin: '20px', fontWeight: '400' }}>
+                 <Typography variant="h6" style={{ margin: '20px', fontWeight: '400' }}>
                     Закрытые заявки
                 </Typography>
                 {
-                    requests.requests.map((request, index) =>
+                    props.requests.map((request, index) =>
                         <RequestListItem key={index} request={request} />
                     )
                 }
