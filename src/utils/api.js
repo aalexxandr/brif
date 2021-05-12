@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: 'https://us-central1-restapi-19404.cloudfunctions.net/user'
+  baseURL: 'https://us-central1-restapi-19404.cloudfunctions.net/user/'
 })
 
 export const requestsApi = {
@@ -10,6 +10,11 @@ export const requestsApi = {
   },
   post(requestData) {
     return instance.post( {requestData} ).then( response => {
+      return response
+    } )
+  },
+  put(requestId, requestData) {
+    return instance.put(requestId, {requestData} ).then( response => {
       return response
     } )
   }
