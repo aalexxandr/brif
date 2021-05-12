@@ -1,4 +1,4 @@
-import { authorization } from '../../redux/authReducer'
+import { authorization } from '../../../redux/authReducer'
 import { connect } from 'react-redux'
 import LoginButton from './LoginButton'
 

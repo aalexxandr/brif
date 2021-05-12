@@ -3,9 +3,43 @@
 // import { firestore } from '../utils/context'
 // import firebase from 'firebase'
 // import { collectionName } from '../utils/consts'
+import { Formik } from "formik"
+import * as Yup from 'yup'
 
 const SendRequest = () => {
-    return 'send request'
+    return (
+        <Formik
+            initialValues = {{
+                companyName: '',
+                aboutCompany: '',
+                currentDomain: '',
+                fio: '',
+                email: '',
+                phone: '',
+                advantages: '',
+                interactionScheme: '',
+                exampleSites: '',
+                colors: '',
+                badColors: '',
+                tagline: '',
+                menuItems: '',
+                aboutSlider: ''
+            }}
+            validationSchema = { Yup.object({
+                companyName: Yup.string()
+                    .max(50, 'Максимальная длинна поля - 50 символов')
+                    .required('Поля является обязательным'),
+                aboutCompany: Yup.string()
+                    .max(400, 'Максимальная длинна поля - 200 символов'),
+                currentDomain:  Yup.string()
+                    .max(50),
+                fio: Yup.string()
+                    .max()
+            }) }
+        >
+
+        </Formik>
+    )
 
     // const [companyName, setCompanyName] = useState('')
     // const [aboutCompany, setAboutCompany] = useState('')
@@ -23,27 +57,6 @@ const SendRequest = () => {
     // const [aboutSlider, setAboutSlider] = useState('')
 
     //const sendForm = async () => {
-    //     for (let item in document.querySelectorAll('.inputRequired')) {
-    //         console.log(item)
-    //     }
-    //     firestore.collection(collectionName).add({
-    //         companyName,
-    //         aboutCompany,
-    //         currentDomain,
-    //         fio,
-    //         email,
-    //         phone,
-    //         advantages,
-    //         interactionScheme,
-    //         exampleSites,
-    //         colors,
-    //         badColors,
-    //         tagline,
-    //         menuItems,
-    //         aboutSlider,
-    //         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    //         status: 'open'
-    //     })
     //     setCompanyName('')
     //     setAboutCompany('')
     //     setCurrentDomain('')

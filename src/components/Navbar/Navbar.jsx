@@ -1,7 +1,7 @@
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import AuthorizedUserContainer from '../AuthorizedUser/AuthorizedUserContainer'
-import LoginButtonContainer from '../LoginButton/LoginButtonContainer'
+import AuthorizedUserContainer from './AuthorizedUser/AuthorizedUserContainer'
+import LoginButtonContainer from './LoginButton/LoginButtonContainer'
 
 const Navbar = (props) => {
     return (

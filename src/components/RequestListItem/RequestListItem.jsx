@@ -5,7 +5,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import CompanyInfo from './CompanyInfo';
+import CompanyInfo from '../CompanyInfo';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const OpenRequests = (props) => {
     const [open, setOpen] = React.useState(false);
@@ -23,6 +24,7 @@ const OpenRequests = (props) => {
             <ListItem button onClick={handleClick} className="nonActiveList">
                 <ListItemText primary={props.request.companyName} />
                 {open ? <ExpandLess /> : <ExpandMore />}
+                { props.request.status === 'open' ? <CheckCircleOutlineIcon /> : false }
             </ListItem>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <CompanyInfo title="О компании" text={props.request.aboutCompany} />

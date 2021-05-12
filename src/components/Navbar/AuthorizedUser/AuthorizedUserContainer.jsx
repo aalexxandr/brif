@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import AuthorizedUser from './AuthorizedUser'
-import { logout } from '../../redux/authReducer'
+import { logout } from '../../../redux/authReducer'
 
 const AuthorizedUserContainer = (props) => (
   <AuthorizedUser {...props} />

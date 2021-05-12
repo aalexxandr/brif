@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core'
-import RequestListItem from '../RequestListItem'
+import RequestListItem from '../RequestListItem/RequestListItem'
 
 const ClosedRequests = (props) => (
     <Container>

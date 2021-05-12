@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink } from 'react-router-dom';
-import { routes } from '../utils/routes'
+import { routes } from '../../utils/routes'
 
 export default function LongMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
