@@ -67,6 +67,7 @@ export const getRequests = () => (dispatch) => {
 export const changeRequest = (requestId, requestData = {status: 'closed'}) => (dispatch) => {
   // setLoading(true)
   requestsApi.put(requestId, requestData).then( response => {
+    debugger
     dispatch(changeRequestData(requestId, requestData))
     return response
   } )
