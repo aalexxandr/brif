@@ -1,10 +1,11 @@
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import Icon from '@material-ui/core/Icon';
+import Icon from '@material-ui/core/Icon'
 import style from './changeRequestStatus.module.css'
+import CheckIcon from '@material-ui/icons/Check'
+
 const ChangeRequestStatus = (props) => {
     return (
         <button className={style.changeStatusButton} onClick={props.changeRequest}>
-            <Icon component={CheckCircleOutlineIcon} color="primary" />
+            <Icon component={CheckIcon} color="primary" />
         </button>
     )
 }

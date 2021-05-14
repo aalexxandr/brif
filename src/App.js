@@ -10,23 +10,27 @@ import Loader from './components/Loader/Loader';
 import AppRoutes from './components/AppRoutes';
 
 const App = (props) => {
-  const [user] = useAuthState(auth)
+
+  let [user, loading] = useAuthState(auth)
 
   useEffect(({initializeApp} = props) => {
-    initializeApp(user)
-  })
+      initializeApp(user, loading)
+  }, [user])
 
-  return props.initial ? 
-  <Loader /> :
-  <BrowserRouter>
-    <NavbarContainer />
-    <AppRoutes />
-  </BrowserRouter>
-    
+  return (
+    props.loading ? 
+      <Loader />
+    :
+      <BrowserRouter>
+        <NavbarContainer />
+        <AppRoutes />
+      </BrowserRouter>
+  )
+  
 }
 
 const mapStateToProps = (state) => ({
-  initial: state.app.initial
+  loading: state.app.loading
 })
 
 export default connect(mapStateToProps, { initializeApp })(App);

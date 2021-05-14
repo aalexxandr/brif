@@ -18,7 +18,7 @@ export const requestsReducer = (state = initialState, action) => {
           ...action.requestsData
         ]
       })
-      case SET_LOADING : 
+      case SET_LOADING :
         return ({
           ...state,
           loading: action.status
@@ -41,7 +41,7 @@ export const requestsReducer = (state = initialState, action) => {
   }
 }
 
-const setRequest = (requestsData) => ({
+const setRequests = (requestsData) => ({
   type: SET_REQUESTS,
   requestsData
 })
@@ -49,26 +49,28 @@ const setLoading = (status) => ({
   type: SET_LOADING,
   status
 })
-const changeRequestData = (requestId, requestsData) => ({
+const changeRequestData = (requestId, requestData) => ({
   type: CHANGE_REQUEST_DATA,
   requestId,
-  requestsData
+  requestData
 })
 
-export const getRequests = () => (dispatch) => {
+export const getRequests = (status) => (dispatch) => {
   dispatch(setLoading(true))
   requestsApi.get().then( (response) => {
-    response.status === 200 && dispatch(setRequest(response.data))
-  } ).then( () => {
-    dispatch(setLoading(false))
-  } )
+  if(response.status === 200) {
+      dispatch(setRequests(response.data.filter( request => request.status === status)))
+      dispatch(setLoading(false))
+    }
+  })
 }
 
 export const changeRequest = (requestId, requestData = {status: 'closed'}) => (dispatch) => {
-  // setLoading(true)
-  requestsApi.put(requestId, requestData).then( response => {
-    debugger
-    dispatch(changeRequestData(requestId, requestData))
-    return response
-  } )
+  // dispatch(setLoading(true))
+  // requestsApi.put(requestId, requestData).then( response => {
+  //   if (response.status === 200) {
+      dispatch(changeRequestData(requestId, requestData))
+  //     dispatch(setLoading(false))
+  //   }
+  // } )
 }

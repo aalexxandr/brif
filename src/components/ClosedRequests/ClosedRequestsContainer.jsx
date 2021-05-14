@@ -6,20 +6,11 @@ import ClosedRequests from './ClosedRequests'
 
 const ClosedRequestsContainer = (props) => {
     useEffect( () => {
-        props.getRequests()
+        props.getRequests('closed')
     }, [])
 
-
-    const requestsData = []
-
-    props.requests.map(request => {
-        if (request.status === 'close') {
-            requestsData.push(request)
-        }
-    })
-
     return (
-        props.loading ? <Loader /> : <ClosedRequests requests={requestsData} />
+        props.loading ? <Loader /> : <ClosedRequests requests={props.requests} />
     )
 }
 const mapStateToProps = (state) => ({

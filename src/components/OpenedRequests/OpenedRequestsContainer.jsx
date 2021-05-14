@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getRequests } from '../../redux/requestsReducer'
 import Loader from '../Loader/Loader'
@@ -6,20 +6,11 @@ import OpenedRequests from './OpenedRequests'
 
 const OpenedRequestsContainer = (props) => {
     useEffect( () => {
-        props.getRequests()
+        props.getRequests('open')
     }, [])
 
-
-    const requestsData = []
-
-    props.requests.map(request => {
-        if (request.status === 'open') {
-            requestsData.push(request)
-        }
-    })
-
     return (
-        props.loading ? <Loader /> : <OpenedRequests requests={requestsData} />
+        props.loading ? <Loader /> : <OpenedRequests requests={props.requests} />
     )
 }
 const mapStateToProps = (state) => ({

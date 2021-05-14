@@ -1,7 +1,7 @@
 import { setAuthData } from "./authReducer"
 
 const initialState = {
-  initial: false
+  loading: true
 }
 
 const TOGGLE_INITIAL = 'TOGGLE_INITIAL'
@@ -11,7 +11,7 @@ export const appReducer = (state = initialState, action) => {
     case TOGGLE_INITIAL :
       return ({
         ...state,
-        initial: action.initial
+        loading: action.loading
       })
     default :
       return ({
@@ -20,12 +20,12 @@ export const appReducer = (state = initialState, action) => {
   }
 }
 
-// const toggleInitial = (initial) => ({
-//   type: TOGGLE_INITIAL,
-//   initial
-// })
+const toggleLoading = (loading) => ({
+  type: TOGGLE_INITIAL,
+  loading
+})
 
-export const initializeApp = (user) => (dispatch) => {
+export const initializeApp = (user, loading) => (dispatch) => {
   if(user) {
     dispatch(setAuthData({
       isAuth: true,
@@ -42,4 +42,5 @@ export const initializeApp = (user) => (dispatch) => {
       photoUrl: null
     }))
   }
+  dispatch(toggleLoading(loading))
 }

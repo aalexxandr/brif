@@ -14,7 +14,7 @@ export const requestsApi = {
     } )
   },
   put(requestId, requestData) {
-    return instance.put(requestId, {requestData} ).then( response => {
+    return instance.put(requestId, requestData ).then( response => {
       return response
     } )
   }
