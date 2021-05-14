@@ -9,8 +9,16 @@ const OpenedRequestsContainer = (props) => {
         props.getRequests('open')
     }, [])
 
+    let test = []
+
+    props.requests.map( request => {
+        if (request.status === 'open') {
+            test.push(request)
+        }
+    })
+
     return (
-        props.loading ? <Loader /> : <OpenedRequests requests={props.requests} />
+        props.loading ? <Loader /> : <OpenedRequests requests={test} />
     )
 }
 const mapStateToProps = (state) => ({
