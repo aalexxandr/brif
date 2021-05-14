@@ -64,13 +64,11 @@ export const getRequests = () => (dispatch) => {
   } )
 }
 
-export const changeRequest = (requestId, requestData = {status: 'closed'}) => (dispatch) => {
-
+export const changeStatusRequest = (requestId, status) => (dispatch) => {
   dispatch(setLoading(true))
-
-  requestsApi.put(requestId, requestData).then( response => {
+  requestsApi.put(requestId, status).then( response => {
     if (response.status === 200) {
-      dispatch(changeRequestData(requestId, requestData))
+      dispatch(changeRequestData(requestId, status))
       dispatch(setLoading(false))
     }
   } )

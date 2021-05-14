@@ -10,7 +10,7 @@ const ClosedRequestsContainer = (props) => {
     }, [])
 
     return (
-        props.loading ? <Loader /> : <ClosedRequests requests={props.requests} />
+        props.loading ? <Loader /> : <ClosedRequests requests={props.requests.filter(request => request.status === 'closed')} />
     )
 }
 const mapStateToProps = (state) => ({
