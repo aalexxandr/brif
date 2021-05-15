@@ -1,7 +1,7 @@
 import SendRequest from '../components/SendRequest'
 import OpenedRequestsContainer from '../components/OpenedRequests/OpenedRequestsContainer'
 import ClosedRequests from '../components/ClosedRequests/ClosedRequestsContainer'
-
+import DeletedRequests from '../components/DeletedRequests/DeteledRequestsContainer'
 export const routes = [
   {
     name: 'Главная',
@@ -19,6 +19,12 @@ export const routes = [
     name : 'Закрытые заявки',
     path : '/closed_requests',
     Component : ClosedRequests,
+    private: true
+  },
+  {
+    name : 'Корзина',
+    path : '/deleted_requests',
+    Component : DeletedRequests,
     private: true
   }
 ]

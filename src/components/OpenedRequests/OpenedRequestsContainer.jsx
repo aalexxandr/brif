@@ -18,5 +18,3 @@ const mapStateToProps = (state) => ({
     loading: state.requests.loading
 })
 export default connect(mapStateToProps, {getRequests})(OpenedRequestsContainer)
-
-

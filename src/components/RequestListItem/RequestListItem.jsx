@@ -8,8 +8,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore'
 import CompanyInfo from '../CompanyInfo'
 import ChangeRequestStatusContainer from './ChangeRequestStatus/ChangeRequestStatusContainer'
 import { Grid } from '@material-ui/core'
-import CloseIcon from '@material-ui/icons/Close'
-import Icon from '@material-ui/core/Icon'
+import DeleteRequestContainer from './DeleteRequest/DeleteRequestContainer'
 
 const OpenRequests = (props) => {
     const [open, setOpen] = React.useState(false);
@@ -45,7 +44,8 @@ const OpenRequests = (props) => {
                     <CompanyInfo title="Слоган" text={props.request.tagline} />
                 </Collapse>
             </List>
-            <ChangeRequestStatusContainer requestId={props.request.id} status={ props.request.status === 'open' ? 'open' : 'close'} /> 
+            <ChangeRequestStatusContainer requestId={props.request.id} status={ props.request.status === 'open' ? 'closed' : 'open'} />
+            <DeleteRequestContainer />
         </Grid>
     )
 }

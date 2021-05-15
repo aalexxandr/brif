@@ -6,7 +6,7 @@ import ClosedRequests from './ClosedRequests'
 
 const ClosedRequestsContainer = (props) => {
     useEffect( () => {
-        props.getRequests('closed')
+        props.getRequests()
     }, [])
 
     return (

@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
 import ChangeRequestStatus from './ChangeRequestStatus'
-import { changeStatusRequest } from '../../../redux/requestsReducer'
+import { changeRequestStatus } from '../../../redux/requestsReducer'
 
 const ChangeRequestStatusContainer = (props) => {
     const changeRequest = () => {
-        props.changeRequest(props.requestId, props.status)
+        props.changeRequestStatus(props.requestId, props.status)
     }
     return (
-        <ChangeRequestStatus changeRequest={changeStatusRequest} />
+        <ChangeRequestStatus changeRequest={changeRequest} status={props.status} />
     )
 }
 
-export default connect('', {changeStatusRequest})(ChangeRequestStatusContainer)
+export default connect('', {changeRequestStatus})(ChangeRequestStatusContainer)
