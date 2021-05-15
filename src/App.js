@@ -15,7 +15,7 @@ const App = (props) => {
 
   useEffect(({initializeApp} = props) => {
       initializeApp(user, loading)
-  }, [user])
+  }, [loading])
 
   return (
     props.loading ? 
