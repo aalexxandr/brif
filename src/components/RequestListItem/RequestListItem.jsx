@@ -45,7 +45,7 @@ const OpenRequests = (props) => {
                 </Collapse>
             </List>
             <ChangeRequestStatusContainer requestId={props.request.id} status={ props.request.status === 'open' ? 'closed' : 'open'} />
-            <DeleteRequestContainer />
+            <DeleteRequestContainer requestId={props.request.id} />
         </Grid>
     )
 }
