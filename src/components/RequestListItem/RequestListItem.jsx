@@ -18,7 +18,7 @@ const OpenRequests = (props) => {
     }
     
     return (
-        <Grid container justify="center">
+        <Grid container justify="center" alignItems="center">
             <List
                 component="nav"
                 aria-labelledby="nested-list-subheader"

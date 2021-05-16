@@ -1,0 +1,12 @@
+.arrowIcon {
+    transform: rotate(-90deg);
+    margin: 0 5px;
+    margin-top: 7px;
+}
+.buttonsBlock{
+    margin-left: 77px;
+    margin-top: 10px;
+}
+.action{
+    margin-left: 5px;
+}

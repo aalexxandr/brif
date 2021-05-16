@@ -1,12 +1,12 @@
 import Icon from '@material-ui/core/Icon'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import style from './deleteRequest.module.css'
+import IconButton from '@material-ui/core/IconButton';
 
 const DeleteRequest = (props) => {
     return (
-        <button className={style.deleteRequestButton} onClick={props.deleteRequest}>
+        <IconButton onClick={props.deleteRequest}>
             <Icon component={DeleteOutlineIcon} color="primary"/>
-        </button>
+        </IconButton>
     )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core'
 import RequestListItem from '../RequestListItem/RequestListItem'
+import Instruction from '../Instruction/Instruction'
 
 const ClosedRequests = (props) => (
     <Container>
@@ -14,6 +15,7 @@ const ClosedRequests = (props) => (
                 alignItems="center"
                 direction="column"
             >
+                <Instruction />
                  <Typography variant="h6" style={{ margin: '20px', fontWeight: '400' }}>
                     Закрытые заявки
                 </Typography>
