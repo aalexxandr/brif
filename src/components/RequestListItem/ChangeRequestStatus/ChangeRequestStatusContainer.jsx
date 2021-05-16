@@ -4,10 +4,10 @@ import { changeRequestStatus } from '../../../redux/requestsReducer'
 
 const ChangeRequestStatusContainer = (props) => {
     const changeRequest = () => {
-        props.changeRequestStatus(props.requestId, props.status)
+        props.changeRequestStatus(props.requestId, props.changeStatus)
     }
     return (
-        <ChangeRequestStatus changeRequest={changeRequest} status={props.status} />
+        <ChangeRequestStatus changeRequest={changeRequest} status={props.changeStatus} />
     )
 }
 

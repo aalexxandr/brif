@@ -44,7 +44,7 @@ const OpenRequests = (props) => {
                     <CompanyInfo title="Слоган" text={props.request.tagline} />
                 </Collapse>
             </List>
-            <ChangeRequestStatusContainer requestId={props.request.id} status={ props.request.status === 'open' ? 'closed' : 'open'} />
+            <ChangeRequestStatusContainer requestId={props.request.id} changeStatus={ props.request.status === 'open' ? 'closed' : 'open'} />
             <DeleteRequestContainer requestId={props.request.id} />
         </Grid>
     )
