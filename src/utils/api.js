@@ -17,5 +17,10 @@ export const requestsApi = {
     return instance.put(requestId, requestData ).then( response => {
       return response
     } )
+  },
+  delete(requestId) {
+    return instance.delete(requestId).then( response => {
+      return response
+    } )
   }
 }

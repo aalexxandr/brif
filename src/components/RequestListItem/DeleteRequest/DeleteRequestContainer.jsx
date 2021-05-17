@@ -1,16 +1,15 @@
 import { connect } from 'react-redux'
 import DeleteRequest from './DeleteRequest'
-import { changeRequestStatus } from '../../../redux/requestsReducer'
+import { deleteRequest } from '../../../redux/requestsReducer'
 
 const DeleteRequestContainer = (props) => {
-    const deleteRequest = () => {
-        props.changeRequestStatus(props.requestId, 'deleted')
-    }
-    return (
-        <div>
-            <DeleteRequest deleteRequest={deleteRequest} />
-        </div>
-    )
+  const deleteRequest = () => {
+    props.deleteRequest(props.requestId)
+  }
+
+  return (
+    <DeleteRequest deleteRequest={deleteRequest} />
+  )
 }
 
-export default connect('', {changeRequestStatus})(DeleteRequestContainer)
+export default connect('', {deleteRequest})(DeleteRequestContainer)

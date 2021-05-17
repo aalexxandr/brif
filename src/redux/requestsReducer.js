@@ -3,6 +3,7 @@ import { requestsApi } from '../utils/api'
 const SET_REQUESTS = 'SET_REQUESTS'
 const SET_LOADING = 'SET_LOADING'
 const CHANGE_REQUEST_DATA = 'CHANGE_REQUEST_DATA'
+const DELETE_REQUEST = 'DELETE_REQUEST'
 
 const initialState = {
   requestsData: [],
@@ -36,6 +37,11 @@ export const requestsReducer = (state = initialState, action) => {
             return request
           })
         })
+        case DELETE_REQUEST:
+          return ({
+            ...state,
+            requestsData: state.requestsData.filter( request => request.id !== action.requestId )
+          })
     default :
       return state
   }
@@ -53,6 +59,10 @@ const changeRequestData = (requestId, requestData) => ({
   type: CHANGE_REQUEST_DATA,
   requestId,
   requestData
+})
+const deleteRequestData = (requestId) => ({
+  type: DELETE_REQUEST,
+  requestId
 })
 
 export const getRequests = () => (dispatch) => {
@@ -72,5 +82,12 @@ export const changeRequestStatus = (requestId, status) => (dispatch) => {
       dispatch(setLoading(false))
     }
   } )
+}
 
+export const deleteRequest = (requestId) => (dispatch) => {
+  dispatch(setLoading(true))
+  requestsApi.delete(requestId).then( response => {
+    dispatch(deleteRequestData(requestId))
+    dispatch(setLoading(false))
+  })
 }

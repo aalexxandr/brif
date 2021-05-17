@@ -1,13 +1,11 @@
-import Icon from '@material-ui/core/Icon'
-import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import ClearIcon from '@material-ui/icons/Clear';
 import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon'
 
-const DeleteRequest = (props) => {
-    return (
-        <IconButton onClick={props.deleteRequest}>
-            <Icon component={DeleteOutlineIcon} color="primary"/>
-        </IconButton>
-    )
-}
+const DeleteRequest = (props) => (
+  <IconButton color="red" onClick={props.deleteRequest}>
+    <Icon component={ClearIcon} color="secondary" />
+  </IconButton>
+)
 
 export default DeleteRequest
