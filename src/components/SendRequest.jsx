@@ -5,6 +5,7 @@
 // import { collectionName } from '../utils/consts'
 import { Formik } from "formik"
 import * as Yup from 'yup'
+import CustomInput from './CustomInput/CustomInput'
 
 const SendRequest = () => {
     return (
@@ -34,10 +35,36 @@ const SendRequest = () => {
                 currentDomain:  Yup.string()
                     .max(50),
                 fio: Yup.string()
-                    .max()
+                    .max(50),
+                email: Yup.string()
+                    .max(50)
+                    .required('Поля является обязательным'),
+                phone: Yup.number()
+                    .max(50),
+                advantages: Yup.string()
+                    .max(50),
+                interactionScheme: Yup.string()
+                    .max(50),
+                exampleSites: Yup.string()
+                    .max(50),
+                colors: Yup.string()
+                    .max(50),
+                badColors: Yup.string()
+                    .max(50),
+                tagline: Yup.string()
+                    .max(50),
+                menuItems: Yup.string()
+                    .max(50),
+                aboutSlider: Yup.string()
+                    .max(50),
             }) }
+            onSubmit={(values, {setSubmitting, resetForm}) => {
+                console.log(JSON.stringify(values, null, 2))
+                resetForm()
+                setSubmitting(false)
+            }}
         >
-
+            
         </Formik>
     )
 
