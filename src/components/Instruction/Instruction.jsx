@@ -13,6 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
+import ClearIcon from '@material-ui/icons/Clear';
 
 function PaperComponent(props) {
     return (
@@ -57,19 +58,25 @@ const Instruction = () => {
                             <Icon component={LockOpenIcon} color="primary" />
                             <span className={style.action}>
                                 чтобы открыть заявку
-                        </span>
+                            </span>
                         </Grid>
                         <Grid container className={style.buttonsBlock}>
                             <Icon component={CheckIcon} color="primary" />
                             <span className={style.action}>
                                 чтобы закрыть заявку
-                        </span>
+                            </span>
                         </Grid>
                         <Grid container className={style.buttonsBlock}>
                             <Icon component={DeleteOutlineIcon} color="primary" />
                             <span className={style.action}>
                                 чтобы переместить заявку в корзину
-                        </span>
+                            </span>
+                        </Grid>
+                        <Grid container className={style.buttonsBlock}>
+                            <Icon component={ClearIcon} color="secondary" />
+                            <span className={style.action}>
+                                чтобы безвозвратно удалить заявку
+                            </span>
                         </Grid>
                     </Typography>
                 </DialogContent>

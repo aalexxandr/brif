@@ -1,14 +1,17 @@
 import React from 'react'
+
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Collapse from '@material-ui/core/Collapse'
 import ExpandLess from '@material-ui/icons/ExpandLess'
+import { Grid } from '@material-ui/core'
 import ExpandMore from '@material-ui/icons/ExpandMore'
+
 import CompanyInfo from '../CompanyInfo'
 import ChangeRequestStatusContainer from './ChangeRequestStatus/ChangeRequestStatusContainer'
-import { Grid } from '@material-ui/core'
-import DeleteRequestContainer from './DeleteRequest/DeleteRequestContainer'
+import MoveToTrashRequestContainer from './MoveToTrashRequest/MoveToTrashRequestContainer'
+import DeteleRequestContainer from './DeleteRequest/DeleteRequestContainer'
 
 const OpenRequests = (props) => {
     const [open, setOpen] = React.useState(false);
@@ -44,8 +47,8 @@ const OpenRequests = (props) => {
                     <CompanyInfo title="Слоган" text={props.request.tagline} />
                 </Collapse>
             </List>
-            <ChangeRequestStatusContainer requestId={props.request.id} changeStatus={ props.request.status === 'open' ? 'closed' : 'open'} />
-            <DeleteRequestContainer requestId={props.request.id} />
+            <ChangeRequestStatusContainer requestId={props.request.id} changeStatus={ props.request.status === 'open' ? 'closed' : 'open' } />
+            { props.request.status === 'deleted' ? <DeteleRequestContainer requestId={props.request.id} /> : <MoveToTrashRequestContainer requestId={props.request.id} /> }
         </Grid>
     )
 }
