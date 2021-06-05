@@ -1,8 +1,11 @@
 import * as Yup from 'yup'
+import "yup-phone";
+
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
 export const validationSchema = Yup.object().shape({
     companyName: Yup.string()
-        .max(100, 'Максимум 100 символов')
+        .max(50, 'Максимум 50 символов')
         .required('Поле является обязательным'),
     aboutCompany: Yup.string()
         .max(400, 'Максимум 400 символов')
@@ -10,18 +13,19 @@ export const validationSchema = Yup.object().shape({
     currentDomain: Yup.string()
         .max(200, 'Максимум 200 символов'),
     fio: Yup.string()
-        .max(100, 'Максимум 100 символов')
+        .max(70, 'Максимум 70 символов')
         .required('Поле является обязательным'),
     email: Yup.string()
         .email('Неправильный Email')
         .max(100, 'Максимум 100 символов')
         .required('Поле является обязательным'),
     phone: Yup.string()
-        .max(20, 'Максимум 20 символов'),
+        .matches(phoneRegExp, 'Введите корректный телефон')
+        .max(11, 'Введите корректный телефон'),
     advantages: Yup.string()
         .max(200, 'Максимум 200 символов'),
     interactionScheme: Yup.string()
-        .max(200, 'Максимум 200 символов'),
+        .max(400, 'Максимум 400 символов'),
     exampleSites: Yup.string()
         .max(200, 'Максимум 200 символов'),
     tagline: Yup.string()

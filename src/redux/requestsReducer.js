@@ -91,3 +91,7 @@ export const deleteRequest = (requestId) => (dispatch) => {
     dispatch(setLoading(false))
   })
 }
+
+export const addRequest = (requestData) => {
+  requestsApi.post({...requestData, status: 'open'})
+}

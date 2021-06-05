@@ -9,18 +9,12 @@ export const requestsApi = {
     return instance.get().then( response => response)
   },
   post(requestData) {
-    return instance.post( {requestData} ).then( response => {
-      return response
-    } )
+    return axios.post( 'https://us-central1-restapi-19404.cloudfunctions.net/user/', requestData ).then( response => response)
   },
   put(requestId, requestData) {
-    return instance.put(requestId, requestData ).then( response => {
-      return response
-    } )
+    return instance.put(requestId, requestData ).then( response => response)
   },
   delete(requestId) {
-    return instance.delete(requestId).then( response => {
-      return response
-    } )
+    return instance.delete(requestId).then( response => response)
   }
 }

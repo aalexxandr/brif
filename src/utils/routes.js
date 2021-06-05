@@ -1,4 +1,4 @@
-import SendRequest from '../components/SendRequest/SendRequestContainer'
+import SendRequest from '../components/SendRequest/SendRequest'
 import OpenedRequests from '../components/OpenedRequests/OpenedRequestsContainer'
 import ClosedRequests from '../components/ClosedRequests/ClosedRequestsContainer'
 import DeletedRequests from '../components/DeletedRequests/DeteledRequestsContainer'

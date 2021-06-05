@@ -1,10 +1,14 @@
-import { Button, Container, Grid, TextField, Typography } from '@material-ui/core'
-import React from 'react'
+import { Button, Container, Grid, TextField, Typography} from '@material-ui/core'
+import React, { useState } from 'react'
 import { Formik } from "formik"
 import { fields } from '../../utils/formFields'
 import { validationSchema } from '../../utils/formFields'
+import { addRequest } from '../../redux/requestsReducer'
+import {Alert, AlertTitle} from '@material-ui/lab';
 
-const SendRequest = (props) => {
+const SendRequest = () => {
+
+    const [submitted, setSubmitted] = useState(false)
 
     const initialValues = {}
     fields.map(field => initialValues[field.code] = '')
@@ -25,11 +29,23 @@ const SendRequest = (props) => {
                     <Typography variant="h6" style={{ margin: '20px', fontWeight: '400' }}>
                         Заявка
                     </Typography>
+                    {submitted && 
+                    <Alert severity="success" style={{width: '100%'}}>
+                        <AlertTitle>Успешно</AlertTitle>
+                        Ваша заявка принята, совсем скоро с вами свяжется менеджер!
+                    </Alert>
+                    }
+                    
                     <Formik
                         initialValues={initialValues}
                         validateOnBlur
-                        onSubmit={(values) => { props. }}
                         validationSchema={validationSchema}
+                        onSubmit={(values, actions) => { 
+                            addRequest(values)
+                            actions.resetForm({values: initialValues})
+                            setSubmitted(true)
+                        }
+                        }
                     >
                         {
                             ({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (

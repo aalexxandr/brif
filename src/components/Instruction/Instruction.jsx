@@ -35,8 +35,8 @@ const Instruction = () => {
     };
 
     return (
-        <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        <div className={style.instructionBlock}>
+            <Button variant="outlined" color="primary" onClick={handleClickOpen} className={style.instructionButton}>
                 Инструкция
             </Button>
             <Dialog
@@ -49,12 +49,12 @@ const Instruction = () => {
                     Как управлять заявками:
                 </DialogTitle>
                 <DialogContent>
-                    <Typography variant="body1" style={{ margin: '20px 55px', fontWeight: '400' }}>
-                        <Grid container>
+                    <Typography variant="body1" className={style.popupWrapper}>
+                        <Grid container className={style.instructionTitle_grid}>
                             Нажмите
                         <Icon component={SubdirectoryArrowLeftIcon} className={style.arrowIcon} />
                         </Grid>
-                        <Grid container className={style.buttonsBlock}>
+                        <Grid container nowrap className={style.buttonsBlock}>
                             <Icon component={LockOpenIcon} color="primary" />
                             <span className={style.action}>
                                 чтобы открыть заявку

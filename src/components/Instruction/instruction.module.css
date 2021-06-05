@@ -1,12 +1,33 @@
+.instructionBlock .instructionButton{
+    margin-top: 20px;
+}
 .arrowIcon {
     transform: rotate(-90deg);
     margin: 0 5px;
     margin-top: 7px;
 }
 .buttonsBlock{
-    margin-left: 70px;
+    margin-left: 78px;
     margin-top: 10px;
 }
 .action{
     margin-left: 5px;
+}
+.popupWrapper{
+    margin: 20px 55px
+}
+@media screen and (max-width:600px) {
+    .popupWrapper{
+        margin: 10px 20px
+    }
+    .buttonsBlock{
+        margin-left: 0;
+    }
+    .instructionTitle_grid{
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+    .arrowIcon{
+        transform: rotate(-90deg) scale(1, -1);
+    }
 }

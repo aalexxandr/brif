@@ -13,6 +13,8 @@ import ChangeRequestStatusContainer from './ChangeRequestStatus/ChangeRequestSta
 import MoveToTrashRequestContainer from './MoveToTrashRequest/MoveToTrashRequestContainer'
 import DeteleRequestContainer from './DeleteRequest/DeleteRequestContainer'
 
+import { fields } from '../../utils/formFields'
+
 const OpenRequests = (props) => {
     const [open, setOpen] = React.useState(false);
 
@@ -22,31 +24,24 @@ const OpenRequests = (props) => {
     
     return (
         <Grid container justify="center" alignItems="center">
-            <List
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-                style={{ width: '80%' }}
-            >
-                <ListItem button onClick={handleClick} className="nonActiveList">
-                    <ListItemText primary={props.request.companyName} />
-                    {open ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <CompanyInfo title="О компании" text={props.request.aboutCompany} />
-                    <CompanyInfo title="Предпочтения для главного слайдера" text={props.request.aboutSlider} />
-                    <CompanyInfo title="Преимущества" text={props.request.advantages} />
-                    <CompanyInfo title="Нежелательные цвета" text={props.request.badColors} />
-                    <CompanyInfo title="Общая цветовая гамма" text={props.request.colors} />
-                    <CompanyInfo title="О компании" text={props.request.currentDomain} />
-                    <CompanyInfo title="Адрес текущего сайта" text={props.request.companyName} />
-                    <CompanyInfo title="Почта" text={props.request.email} />
-                    <CompanyInfo title="Примеры сайтов" text={props.request.exampleSites} />
-                    <CompanyInfo title="Схема взаимодействия с клиентом" text={props.request.interactionScheme} />
-                    <CompanyInfo title="Пункты меню" text={props.request.menuItems} />
-                    <CompanyInfo title="Номер телефона" text={props.request.phone} />
-                    <CompanyInfo title="Слоган" text={props.request.tagline} />
-                </Collapse>
-            </List>
+            <Grid item md={10} xs={12}>
+                <List
+                    component="nav"
+                    aria-labelledby="nested-list-subheader"
+                >
+                    <ListItem button onClick={handleClick} className="nonActiveList">
+                        <ListItemText primary={props.request.companyName} />
+                        {open ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+
+                        {
+                            fields.map( field => <CompanyInfo title={field.name} text={props.request[field.code]} key={field.code} /> )
+                        }
+
+                    </Collapse>
+                </List>
+            </Grid>
             <ChangeRequestStatusContainer requestId={props.request.id} changeStatus={ props.request.status === 'open' ? 'closed' : 'open' } />
             { props.request.status === 'deleted' ? <DeteleRequestContainer requestId={props.request.id} /> : <MoveToTrashRequestContainer requestId={props.request.id} /> }
         </Grid>

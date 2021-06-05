@@ -43,9 +43,11 @@ export default function LongMenu() {
         }}
       >
         {routes.map(({path, name}) => (
-          <MenuItem key={path} onClick={handleClose}>
-            <NavLink to={path}>{name}</NavLink>
-          </MenuItem>
+            <NavLink to={path}>
+            <MenuItem key={path} onClick={handleClose}>
+                {name}
+            </MenuItem>
+            </NavLink>
         ))}
       </Menu>
     </div>
