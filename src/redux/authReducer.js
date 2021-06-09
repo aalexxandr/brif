@@ -40,6 +40,12 @@ export const setAuthData = (authData) => ({
 
 export const logout = () => (dispatch) => {
   firebaseLogout()
+  dispatch(setAuthData( {
+    isAuth: false,
+    userName: null,
+    userEmail: null,
+    photoUrl: null
+  } ))
 }
 
 export const authorization = () => (dispatch) => {

@@ -23,7 +23,7 @@ const OpenRequests = (props) => {
     }
     
     return (
-        <Grid container justify="center" alignItems="center">
+        <Grid container justify="center" alignItems="center" key={props.key}>
             <Grid item md={10} xs={12}>
                 <List
                     component="nav"

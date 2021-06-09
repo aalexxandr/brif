@@ -1,6 +1,9 @@
 .instructionBlock .instructionButton{
     margin-top: 20px;
 }
+.instructionTitle_grid{
+    display: flex;
+}
 .arrowIcon {
     transform: rotate(-90deg);
     margin: 0 5px;
@@ -9,6 +12,7 @@
 .buttonsBlock{
     margin-left: 78px;
     margin-top: 10px;
+    display: flex;
 }
 .action{
     margin-left: 5px;
@@ -16,10 +20,17 @@
 .popupWrapper{
     margin: 20px 55px
 }
+.instructionPopup{
+    padding: 8px 78px !important;
+}
 @media screen and (max-width:600px) {
+    .instructionPopup{
+        padding: 8px 20px !important;
+    }
     .popupWrapper{
         margin: 10px 20px
     }
+    
     .buttonsBlock{
         margin-left: 0;
     }

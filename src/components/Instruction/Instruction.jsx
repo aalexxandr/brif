@@ -48,36 +48,36 @@ const Instruction = () => {
                 <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
                     Как управлять заявками:
                 </DialogTitle>
-                <DialogContent>
+                <DialogContent className={style.instructionPopup}>
                     <Typography variant="body1" className={style.popupWrapper}>
-                        <Grid container className={style.instructionTitle_grid}>
+                        <div className={style.instructionTitle_grid}>
                             Нажмите
-                        <Icon component={SubdirectoryArrowLeftIcon} className={style.arrowIcon} />
-                        </Grid>
-                        <Grid container nowrap className={style.buttonsBlock}>
+                            <Icon component={SubdirectoryArrowLeftIcon} className={style.arrowIcon} />
+                        </div>
+                        <div className={style.buttonsBlock}>
                             <Icon component={LockOpenIcon} color="primary" />
                             <span className={style.action}>
                                 чтобы открыть заявку
                             </span>
-                        </Grid>
-                        <Grid container className={style.buttonsBlock}>
+                        </div>
+                        <div className={style.buttonsBlock}>
                             <Icon component={CheckIcon} color="primary" />
                             <span className={style.action}>
                                 чтобы закрыть заявку
                             </span>
-                        </Grid>
-                        <Grid container className={style.buttonsBlock}>
+                        </div>
+                        <div className={style.buttonsBlock}>
                             <Icon component={DeleteOutlineIcon} color="primary" />
                             <span className={style.action}>
                                 чтобы переместить заявку в корзину
                             </span>
-                        </Grid>
-                        <Grid container className={style.buttonsBlock}>
+                        </div>
+                        <div className={style.buttonsBlock}>
                             <Icon component={ClearIcon} color="secondary" />
                             <span className={style.action}>
                                 чтобы безвозвратно удалить заявку
                             </span>
-                        </Grid>
+                        </div>
                     </Typography>
                 </DialogContent>
                 <DialogActions>

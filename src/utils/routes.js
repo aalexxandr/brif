@@ -2,6 +2,8 @@ import SendRequest from '../components/SendRequest/SendRequest'
 import OpenedRequests from '../components/OpenedRequests/OpenedRequestsContainer'
 import ClosedRequests from '../components/ClosedRequests/ClosedRequestsContainer'
 import DeletedRequests from '../components/DeletedRequests/DeteledRequestsContainer'
+import AdminsList from '../components/AdminsList/AdminsListContainer'
+
 export const routes = [
   {
     name: 'Главная',
@@ -25,6 +27,12 @@ export const routes = [
     name : 'Корзина',
     path : '/deleted_requests',
     Component : DeletedRequests,
+    private: true
+  },
+  {
+    name : 'Администраторы',
+    path : '/admins',
+    Component : AdminsList,
     private: true
   }
 ]

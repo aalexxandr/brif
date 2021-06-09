@@ -21,7 +21,7 @@ const DeletedRequests = (props) => (
                 </Typography>
                 {
                     props.requests.map((request, index) =>
-                        <RequestListItem key={index} request={request} />
+                        <RequestListItem keyVal={index} request={request} />
                     )
                 }
             </Grid>
