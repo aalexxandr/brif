@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './instruction.module.css'
 import Icon from '@material-ui/core/Icon'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import SubdirectoryArrowLeftIcon from '@material-ui/icons/SubdirectoryArrowLeft';
 import CheckIcon from '@material-ui/icons/Check'

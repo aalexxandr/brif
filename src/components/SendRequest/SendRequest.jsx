@@ -48,8 +48,8 @@ const SendRequest = () => {
                         }
                     >
                         {
-                            ({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
-                                <div>
+                            ({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit }) => (
+                                <form onSubmit={handleSubmit}>
                                     {
                                         fields.map(field => (
                                             <TextField
@@ -69,8 +69,8 @@ const SendRequest = () => {
                                             />
                                         ))
                                     }
-                                    <Button disabled={!isValid} variant="outlined" color="inherit" onClick={handleSubmit} style={{ margin: '15px 0' }}>Отправить</Button>
-                                </div>
+                                    <Button disabled={!isValid} variant="outlined" color="inherit" style={{ margin: '15px 0' }} type="submit">Отправить</Button>
+                                </form>
                             )
                         }
                     </Formik>

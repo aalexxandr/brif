@@ -1,0 +1,7 @@
+.email_withEditMode{
+    height: 0;
+    overflow: hidden;
+}
+.emailInput{
+    width: 100%;
+}
