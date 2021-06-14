@@ -26,6 +26,7 @@ const toggleLoading = (loading) => ({
 })
 
 export const initializeApp = (user, loading) => (dispatch) => {
+  debugger
   if(user) {
     dispatch(setAuthData({
       isAuth: true,
