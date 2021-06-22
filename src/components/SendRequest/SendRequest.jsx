@@ -26,8 +26,11 @@ const SendRequest = () => {
                     direction="column"
                 >
 
+                    <Typography variant="h4" style={{ margin: '20px', fontWeight: '400' }} color="primary">
+                        Заявка на создание сайта
+                    </Typography>
                     <Typography variant="h6" style={{ margin: '20px', fontWeight: '400' }}>
-                        Заявка
+                        Заполните все поля как можно подробнее
                     </Typography>
                     {submitted && 
                     <Alert severity="success" style={{width: '100%'}}>

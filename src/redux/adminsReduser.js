@@ -1,12 +1,12 @@
 import { usersApi } from '../utils/api'
 
-const SET_ADMINS = 'SET_ADMINS'
-const SET_LOADING = 'SET_LOADING'
-const DELETE_ADMIN = 'DELETE_ADMIN'
+const SET_ADMINS = 'admins/SET_ADMINS'
+const SET_LOADING = 'admins/SET_LOADING'
+const DELETE_ADMIN = 'admins/DELETE_ADMIN'
 
 const initialState = {
     adminsList: [],
-    loading: false
+    loading: true
 }
 
 export const adminsReduser = (state = initialState, action) => {
@@ -26,7 +26,7 @@ export const adminsReduser = (state = initialState, action) => {
         case DELETE_ADMIN: {
             return {
                 ...state,
-                adminsList: state.adminsList.filter( admin => admin.id !== action.adminId )
+                adminsList: state.adminsList.filter(admin => admin.id !== action.adminId)
             }
         }
         default: {
@@ -51,32 +51,27 @@ const deleteAdminState = (adminId) => ({
     adminId
 })
 
-export const getAdmins = () => (dispatch) => {
-    dispatch(setLoading(true))
-    usersApi.get().then( (res) => {
-        res.status === 200 && dispatch(setAdmins(res.data))
-        dispatch(setLoading(false))
-    })
+export const getAdmins = () => async (dispatch) => {
+    const res = await usersApi.get()
+    res.status === 200 && dispatch(setAdmins(res.data))
+    dispatch(setLoading(false))
 }
 
-export const addAdmin = (adminEmail) => (dispatch) => {
+export const addAdmin = (adminEmail) => async (dispatch) => {
     dispatch(setLoading(true))
-    usersApi.post(adminEmail).then( (res) => {
-        usersApi.get().then( (res) => {
-            res.status === 200 && dispatch(setAdmins(res.data))
-            dispatch(setLoading(false))
-        })
-    })
+    await usersApi.post(adminEmail)
+    const res = await usersApi.get()
+    res.status === 200 && dispatch(setAdmins(res.data))
+    dispatch(setLoading(false))
 }
 
-export const deleteAdmin = (adminId) => (dispatch) => {
+export const deleteAdmin = (adminId) => async (dispatch) => {
     dispatch(setLoading(true))
-    usersApi.delete(adminId).then( (res) => {
-        res.status === 200 && dispatch(deleteAdminState(adminId))
-        dispatch(setLoading(false))
-    })
+    const res = await usersApi.delete(adminId)
+    res.status === 200 && dispatch(deleteAdminState(adminId))
+    dispatch(setLoading(false))
 }
 
 export const changeAdmin = (adminId, email) => {
-    usersApi.put(adminId, {email})
+    usersApi.put(adminId, { email })
 }

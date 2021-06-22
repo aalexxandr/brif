@@ -10,7 +10,6 @@ import * as Yup from 'yup'
 import { changeAdmin } from '../../redux/adminsReduser'
 
 const AdminsListItem = (props) => {
-    
     const [editMode, setEditMode] = useState(false)
 
     const [email, setEmail] = useState(props.email)

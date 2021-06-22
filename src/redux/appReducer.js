@@ -4,7 +4,7 @@ const initialState = {
   loading: true
 }
 
-const TOGGLE_INITIAL = 'TOGGLE_INITIAL'
+const TOGGLE_INITIAL = 'app/TOGGLE_INITIAL'
 
 export const appReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -26,7 +26,6 @@ const toggleLoading = (loading) => ({
 })
 
 export const initializeApp = (user, loading) => (dispatch) => {
-  debugger
   if(user) {
     dispatch(setAuthData({
       isAuth: true,

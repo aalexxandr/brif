@@ -1,7 +1,7 @@
 import { firebaseAuth, firebaseLogout } from '../utils/firebaseFunctions'
 
-const TOGGLE_LOADING = 'TOGGLE_LOADING'
-const SET_AUTH_DATA = 'SET_AUTH_DATA'
+const TOGGLE_LOADING = 'auth/TOGGLE_LOADING'
+const SET_AUTH_DATA = 'auth/SET_AUTH_DATA'
 
 const initialState = {
   isLoading: false,
@@ -13,17 +13,17 @@ const initialState = {
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_LOADING :
+    case TOGGLE_LOADING:
       return {
         ...state,
         isLoading: action.loading
       }
-    case SET_AUTH_DATA :
+    case SET_AUTH_DATA:
       return {
         ...state,
         ...action.authData
       }
-    default :
+    default:
       return state
   }
 }
@@ -40,19 +40,18 @@ export const setAuthData = (authData) => ({
 
 export const logout = () => (dispatch) => {
   firebaseLogout()
-  dispatch(setAuthData( {
+  dispatch(setAuthData({
     isAuth: false,
     userName: null,
     userEmail: null,
     photoUrl: null
-  } ))
+  }))
 }
 
-export const authorization = () => (dispatch) => {
+export const authorization = () => async (dispatch) => {
   dispatch(toggleLoading(true))
-  firebaseAuth().then((res) => {
-    dispatch(setAuthData( {...res} ))
-    dispatch(toggleLoading(false))
-  })
+  const res = await firebaseAuth()
+  dispatch(setAuthData({ ...res }))
+  dispatch(toggleLoading(false))
 }
 

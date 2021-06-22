@@ -1,8 +1,12 @@
-import SendRequest from '../components/SendRequest/SendRequest'
-import OpenedRequests from '../components/OpenedRequests/OpenedRequestsContainer'
-import ClosedRequests from '../components/ClosedRequests/ClosedRequestsContainer'
-import DeletedRequests from '../components/DeletedRequests/DeteledRequestsContainer'
-import AdminsList from '../components/AdminsList/AdminsListContainer'
+import React from 'react'
+// import ClosedRequests from '../components/ClosedRequests/ClosedRequestsContainer'
+
+const AdminsList = React.lazy( () => import ( '../components/AdminsList/AdminsListContainer') )
+const DeletedRequests = React.lazy( () => import ( '../components/DeletedRequests/DeteledRequestsContainer') )
+const ClosedRequests = React.lazy( () => import ( '../components/ClosedRequests/ClosedRequestsContainer') )
+const OpenedRequests = React.lazy( () => import ( '../components/OpenedRequests/OpenedRequestsContainer') )
+const SendRequest = React.lazy( () => import ( '../components/SendRequest/SendRequest') )
+
 
 export const routes = [
   {

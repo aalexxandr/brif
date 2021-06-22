@@ -1,4 +1,4 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux'
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { authReducer } from './authReducer'
 import { appReducer } from './appReducer'
 import { requestsReducer } from './requestsReducer'
@@ -12,4 +12,5 @@ const reducers = combineReducers({
   admins: adminsReduser
 })
 
-export const store = createStore(reducers, applyMiddleware(thunk))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+export const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))

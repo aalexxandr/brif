@@ -6,7 +6,6 @@ import { Formik } from "formik"
 import * as Yup from 'yup'
 
 const AdminsList = (props) => {
-
     const validationSchema = Yup.object().shape({
         email: Yup.string()
         .email('Неправильный Email')
@@ -26,7 +25,7 @@ const AdminsList = (props) => {
                     alignItems="center"
                     direction="column"
                 >
-                    <Typography variant="h6" style={{ margin: '20px', fontWeight: '400' }}>
+                    <Typography variant="h5" style={{ margin: '20px', fontWeight: '400' }}>
                         Список администраторов
                     </Typography>
                     {

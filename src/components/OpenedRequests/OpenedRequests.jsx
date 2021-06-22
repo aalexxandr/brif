@@ -16,7 +16,7 @@ const OpenRequests = (props) => (
                 direction="column"
             >
                 <Instruction />
-                 <Typography variant="h6" style={{ margin: '20px', fontWeight: '400' }}>
+                 <Typography variant="h5" style={{ margin: '20px', fontWeight: '400' }}>
                     Отрытые заявки
                 </Typography>
                 {

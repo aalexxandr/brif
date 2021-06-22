@@ -3,8 +3,9 @@ import { Container, Grid, Typography } from '@material-ui/core'
 import RequestListItem from '../RequestListItem/RequestListItem'
 import Instruction from '../Instruction/Instruction'
 
-const DeletedRequests = (props) => (
-    <Container>
+const DeletedRequests = (props) => {
+    
+    return <Container>
         <Grid container
             style={{ height: window.innerHeight - 100 }}
             alignItems="center"
@@ -16,9 +17,10 @@ const DeletedRequests = (props) => (
                 direction="column"
             >
                 <Instruction />
-                 <Typography variant="h6" style={{ margin: '20px', fontWeight: '400' }}>
+                 <Typography variant="h5" style={{ margin: '20px', fontWeight: '400' }}>
                     Удаленные заявки
                 </Typography>
+
                 {
                     props.requests.map((request, index) =>
                         <RequestListItem keyVal={index} request={request} />
@@ -27,7 +29,7 @@ const DeletedRequests = (props) => (
             </Grid>
         </Grid>
     </Container>
-)
+}
 
 export default DeletedRequests
 

@@ -1,22 +1,24 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { getRequests } from '../../redux/requestsReducer'
 import Loader from '../Loader/Loader'
 import { connect } from "react-redux"
 import DeletedRequest from './DeletedRequests'
+import { getDeletedRequests, getLoading } from '../../redux/selectors/requestsSelectors'
 
 const DeletedRequestContainer = (props) => {
+
     useEffect( () => {
         props.getRequests()
     }, [])
 
     return (
-        props.loading ? <Loader /> : <DeletedRequest requests={props.requests.filter(request => request.status === 'deleted')} />
+        props.loading ? <Loader /> : <DeletedRequest requests={props.requests} />
     )
 }
 
 const mapStateToProps = (state) => ({
-    requests: state.requests.requestsData,
-    loading: state.requests.loading
+    requests: getDeletedRequests(state),
+    loading: getLoading(state)
 })
 
-export default connect(mapStateToProps, {getRequests})(DeletedRequestContainer)
+export default React.memo(connect(mapStateToProps, {getRequests})(DeletedRequestContainer))
