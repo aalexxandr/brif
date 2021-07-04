@@ -1,11 +1,10 @@
-import React from 'react'
-// import ClosedRequests from '../components/ClosedRequests/ClosedRequestsContainer'
+import { lazy } from 'react'
+import SendRequest from '../components/SendRequest/SendRequest'
 
-const AdminsList = React.lazy( () => import ( '../components/AdminsList/AdminsListContainer') )
-const DeletedRequests = React.lazy( () => import ( '../components/DeletedRequests/DeteledRequestsContainer') )
-const ClosedRequests = React.lazy( () => import ( '../components/ClosedRequests/ClosedRequestsContainer') )
-const OpenedRequests = React.lazy( () => import ( '../components/OpenedRequests/OpenedRequestsContainer') )
-const SendRequest = React.lazy( () => import ( '../components/SendRequest/SendRequest') )
+const AdminsList = lazy( () => import ( '../components/AdminsList/AdminsListContainer') )
+const DeletedRequests = lazy( () => import ( '../components/DeletedRequests/DeteledRequestsContainer') )
+const ClosedRequests = lazy( () => import ( '../components/ClosedRequests/ClosedRequestsContainer') )
+const OpenedRequests = lazy( () => import ( '../components/OpenedRequests/OpenedRequestsContainer') )
 
 
 export const routes = [
