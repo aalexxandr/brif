@@ -4,16 +4,12 @@ const SET_ADMINS = 'admins/SET_ADMINS'
 const SET_LOADING = 'admins/SET_LOADING'
 const DELETE_ADMIN = 'admins/DELETE_ADMIN'
 
-export type initialStateType = {
-    adminsList: Array<any> | null,
-    loading: boolean
-}
-const initialState: initialStateType= {
+const initialState = {
     adminsList: [],
     loading: true
 }
 
-export const adminsReduser = (state = initialState, action: any): initialStateType => {
+export const adminsReduser = (state = initialState, action) => {
     switch (action.type) {
         case SET_ADMINS: {
             return {
@@ -39,43 +35,29 @@ export const adminsReduser = (state = initialState, action: any): initialStateTy
     }
 }
 
-type setLoadingActionType = {
-    type: typeof SET_LOADING,
-    isLoading: boolean
-}
-
-const setLoading = (isLoading:boolean) : setLoadingActionType => ({
+const setLoading = (isLoading) => ({
     type: SET_LOADING,
     isLoading
 })
 
-type setAdminsActionType = {
-    type: typeof SET_ADMINS,
-    adminsList: Array<any>
-}
-
-const setAdmins = (adminsList: Array<any>):setAdminsActionType => ({
+const setAdmins = (adminsList) => ({
     type: SET_ADMINS,
     adminsList
 })
 
-type deleteAdminsActionType = {
-    type: typeof DELETE_ADMIN,
-    adminId: number
-}
 
-const deleteAdminState = (adminId: number):deleteAdminsActionType => ({
+const deleteAdminState = (adminId) => ({
     type: DELETE_ADMIN,
     adminId
 })
 
-export const getAdmins = () => async (dispatch: any) => {
+export const getAdmins = () => async (dispatch) => {
     const res = await usersApi.get()
     res.status === 200 && dispatch(setAdmins(res.data))
     dispatch(setLoading(false))
 }
 
-export const addAdmin = (adminEmail: string) => async (dispatch: any) => {
+export const addAdmin = (adminEmail) => async (dispatch) => {
     dispatch(setLoading(true))
     await usersApi.post(adminEmail)
     const res = await usersApi.get()
@@ -83,13 +65,13 @@ export const addAdmin = (adminEmail: string) => async (dispatch: any) => {
     dispatch(setLoading(false))
 }
 
-export const deleteAdmin = (adminId: number) => async (dispatch: any) => {
+export const deleteAdmin = (adminId) => async (dispatch) => {
     dispatch(setLoading(true))
     const res = await usersApi.delete(adminId)
     res.status === 200 && dispatch(deleteAdminState(adminId))
     dispatch(setLoading(false))
 }
 
-export const changeAdmin = (adminId: number, email: string) => {
+export const changeAdmin = (adminId, email) => {
     usersApi.put(adminId, { email })
 }
